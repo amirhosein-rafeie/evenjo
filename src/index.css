@@ -1,68 +1,47 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+* {
+  padding: 0;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  box-sizing: border-box;
+}
+body {
+   background-color:black;
+  font-family: 'Inter', sans-serif;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+@theme {
+   --font-lobster: "Lobster", sans-serif; 
+  --color-primaryMain: #C14FE6;
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+  --color-tint-wt: #A62FCA;
+  --color-tint-bt1: #C14FE6;
+  --color-tint-bt2: #D580F2;
+  --color-tint-bt3: #E4AFF8;
+  --color-tint-bt4: #EFD2FC;
+  --color-tint-bt5: #F1E3F6;
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  --color-shade-ws1: #721D88;
+  --color-shade-ws2: #551666;
+  --color-shade-ws3: #390E44;
+  --color-shade-ws4: #2B0B33;
+  --color-shade-ws5: #1C0722;
+  --color-shade-ws6: #0E0411;
+
+  --color-state-error: #F44336;
+  --color-state-warning: #FF9800;
+  --color-state-info: #2196F3;
+
+  --color-neutral-n100: #B3B3B3;
+  --color-neutral-n200: #999999;
+  --color-neutral-n300: #454545;
+  --color-neutral-n400: #363636;
+  --color-neutral-n500: #303030;
+  --color-neutral-n600: #242424;
+  --color-neutral-n700: #1F1F1F;
+  --color-neutral-n800: #1B1B1B;
+  --color-neutral-n900: #191919;
+  --color-neutral-n1000: #121212;
 }

@@ -1,34 +1,33 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavBar from "./Pages/NavBar.jsx";
+import HomePage from "./Pages/HomePage.jsx";
+import Footer from "./Pages/Footer.jsx";
+// import Shows from "./Pages/Shows.jsx";
+// import Concerts from "./Pages/Concerts.jsx";
+// import Sports from "./Pages/Sports.jsx";
+// import Festivals from "./Pages/Festivals.jsx";
+// import Login from "./Pages/Login.jsx";
+// import SignUp from "./Pages/SignUp.jsx";
+// import ForgetPassW from "./Pages/ForgetPassW.jsx";
+// import Sms from "./Pages/Sms.jsx"
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+  return (<Router> <NavBar />
+    <div>  <Routes>
+      <Route path="/" element={<HomePage />} />
+      {/* <Route path="/shows" element={<Shows />} />
+      <Route path="/concerts" element={<Concerts />} />
+      <Route path="/sports" element={<Sports />} />
+      <Route path="/festivals" element={<Festivals />} /> */}
+      {/* <Route path="/login" element={<Login />} />
+      <Route path="/forget" element={<ForgetPassW />} />
+      <Route path="/sms" element={<Sms />} />
+      <Route path="/signup" element={<SignUp />} />  */}
+    </Routes>
+      <Footer />
+    </div>
+  </Router>
   );
 }
 
