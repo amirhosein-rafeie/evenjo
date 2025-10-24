@@ -172,7 +172,7 @@ const FilterBar = () => {
   );
 
   return (
-    <div className="bg-neutral-n800 p-6 rounded-lg mb-6">
+    <div className=" p-10 rounded-lg mb-6">
       <div className="flex gap-4 items-center">
         <DropdownFilter
           type="what"

@@ -73,8 +73,9 @@ const EventCard = ({ event, variant = "default" }) => {
           </div>
         </div>
 
-        <div className="text-primaryMain font-semibold text-lg">
-          from <span className="text-white">${event.price.toFixed(2)}</span>
+        <div className="text-white font-semibold text-lg">
+          from{" "}
+          <span className="text-primaryMain">${event.price.toFixed(2)}</span>
         </div>
       </div>
     </div>

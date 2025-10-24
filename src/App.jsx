@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./pages/Home/NavBar.jsx";
 import Home from "./pages/Home/home.jsx";
 import Footer from "./pages/Home/Footer.jsx";
+import ConcertList from "./pages/Concert/ConcertList.jsx";
+import SportList from "./pages/Sport/SportList.jsx";
+
 // import Shows from "./Pages/Shows.jsx";
 // import Concerts from "./Pages/Concerts.jsx";
 // import Sports from "./Pages/Sports.jsx";
@@ -21,10 +24,10 @@ function App() {
         {" "}
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/shows" element={<Shows />} />
-      <Route path="/concerts" element={<Concerts />} />
-      <Route path="/sports" element={<Sports />} />
-      <Route path="/festivals" element={<Festivals />} /> */}
+          <Route path="/concerts" element={<ConcertList />} />
+          <Route path="/sports" element={<SportList />} />
+          <Route path="/shows" element={<ConcertList />} />
+          <Route path="/festivals" element={<SportList />} />
           {/* <Route path="/login" element={<Login />} />
       <Route path="/forget" element={<ForgetPassW />} />
       <Route path="/sms" element={<Sms />} />
