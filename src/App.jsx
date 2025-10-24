@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NavBar from "./Pages/NavBar.jsx";
-import HomePage from "./Pages/HomePage.jsx";
-import Footer from "./Pages/Footer.jsx";
+import NavBar from "./pages/Home/NavBar.jsx";
+import Home from "./pages/Home/home.jsx";
+import Footer from "./pages/Home/Footer.jsx";
 // import Shows from "./Pages/Shows.jsx";
 // import Concerts from "./Pages/Concerts.jsx";
 // import Sports from "./Pages/Sports.jsx";
@@ -13,21 +13,26 @@ import Footer from "./Pages/Footer.jsx";
 // import Sms from "./Pages/Sms.jsx"
 
 function App() {
-  return (<Router> <NavBar />
-    <div>  <Routes>
-      <Route path="/" element={<HomePage />} />
-      {/* <Route path="/shows" element={<Shows />} />
+  return (
+    <Router>
+      {" "}
+      <NavBar />
+      <div>
+        {" "}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/* <Route path="/shows" element={<Shows />} />
       <Route path="/concerts" element={<Concerts />} />
       <Route path="/sports" element={<Sports />} />
       <Route path="/festivals" element={<Festivals />} /> */}
-      {/* <Route path="/login" element={<Login />} />
+          {/* <Route path="/login" element={<Login />} />
       <Route path="/forget" element={<ForgetPassW />} />
       <Route path="/sms" element={<Sms />} />
       <Route path="/signup" element={<SignUp />} />  */}
-    </Routes>
-      <Footer />
-    </div>
-  </Router>
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
