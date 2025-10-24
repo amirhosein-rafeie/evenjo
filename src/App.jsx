@@ -5,6 +5,7 @@ import Home from "./pages/Home/home.jsx";
 import Footer from "./pages/Home/Footer.jsx";
 import ConcertList from "./pages/Concert/ConcertList.jsx";
 import SportList from "./pages/Sport/SportList.jsx";
+import FAQ from "./components/Faq.jsx";
 
 // import Shows from "./Pages/Shows.jsx";
 // import Concerts from "./Pages/Concerts.jsx";
@@ -26,13 +27,14 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/concerts" element={<ConcertList />} />
           <Route path="/sports" element={<SportList />} />
-          <Route path="/shows" element={<ConcertList />} />
-          <Route path="/festivals" element={<SportList />} />
+          <Route path="/shows" element={<SportList />} />
+          <Route path="/festivals" element={<ConcertList />} />
           {/* <Route path="/login" element={<Login />} />
       <Route path="/forget" element={<ForgetPassW />} />
       <Route path="/sms" element={<Sms />} />
       <Route path="/signup" element={<SignUp />} />  */}
         </Routes>
+        <FAQ />
         <Footer />
       </div>
     </Router>

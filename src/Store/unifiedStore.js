@@ -176,7 +176,6 @@ const unifiedSlice = createSlice({
         where: false,
         price: false,
       };
-      // Reset filtered events for both categories
       state.filteredEvents.concerts = state.events.concerts;
       state.filteredEvents.sports = state.events.sports;
     },

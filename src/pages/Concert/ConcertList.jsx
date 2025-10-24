@@ -9,7 +9,6 @@ const ConcertList = () => {
   const { filteredEvents, filters, loading, error } = useSelector(
     (state) => state.unified
   );
-  const { category } = filters;
 
   React.useEffect(() => {
     dispatch(setCategory("concerts"));
@@ -60,6 +59,7 @@ const ConcertList = () => {
             </p>
           </div>
         )}
+      
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-import React from "react";
 
 const EventCard = ({ event, variant = "default" }) => {
   const isSport = event.type === "sport" || event.sportName;
