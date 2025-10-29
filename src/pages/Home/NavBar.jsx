@@ -13,8 +13,8 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useNavigate } from "react-router-dom";
 import TWButton from "../../components/TWButton";
-import flag1 from "../../assets/flag1.png";
-import flag2 from "../../assets/flag2.png";
+import flag1 from "../../assets/img/Flag img/flag1.png";
+import flag2 from "../../assets/img/Flag img/flag2.png";
 
 export default function NavBar() {
   const [country, setCountry] = useState("Eng");
@@ -44,10 +44,7 @@ export default function NavBar() {
       >
         <Toolbar className=" flex items-center justify-between w-full">
           <div className="font-normal text-(--color-primaryMain) font-lobster text-4xl flex-none">
-            <Link
-              to="/"
-              className="opacity-100 hover:opacity-100 transition-opacity"
-            >
+            <Link to="/" className="opacity-100 hover:opacity-100 transition-opacity">
               Evenjo
             </Link>
           </div>

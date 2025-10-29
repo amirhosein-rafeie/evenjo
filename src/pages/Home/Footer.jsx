@@ -1,10 +1,10 @@
 import React from "react";
 import micro from "../../assets/micro.png";
-import Facebook from "../../assets/Facebook.png";
-import insta from "../../assets/insta.jpg";
-import inn from "../../assets/inn.png";
-import utube from "../../assets/utube.jpg";
-import Telegram from "../../assets/telegram.jpg";
+import Facebook from "../../assets/img/Footer img/Facebook.png";
+import insta from "../../assets/img/Footer img/insta.jpg";
+import inn from "../../assets/img/Footer img/inn.png";
+import utube from "../../assets/img/Footer img/utube.jpg";
+import Telegram from "../../assets/img/Footer img/telegram.jpg";
 
 const Footer = () => {
   return (
