@@ -6,33 +6,30 @@ import Footer from "./pages/Home/Footer.jsx";
 import ConcertList from "./pages/Concert/ConcertList.jsx";
 import SportList from "./pages/Sport/SportList.jsx";
 import FAQ from "./components/Faq.jsx";
-
-// import Shows from "./Pages/Shows.jsx";
-// import Concerts from "./Pages/Concerts.jsx";
-// import Sports from "./Pages/Sports.jsx";
-// import Festivals from "./Pages/Festivals.jsx";
-// import Login from "./Pages/Login.jsx";
-// import SignUp from "./Pages/SignUp.jsx";
-// import ForgetPassW from "./Pages/ForgetPassW.jsx";
-// import Sms from "./Pages/Sms.jsx"
+import Login from "./pages/Login/Login.jsx";
+import SignUp from "./pages/Login/SignUp.jsx";
+import ForgetPassW from "../src/pages/Login/ForgetPassW.jsx"
+import ResetPassword from "../src/pages/Login/ResetPassword.jsx"
+import VerifyCode from "../src/pages/Login/VerifyCode.jsx"
+import Popup from "./components/common/Popup.jsx";
 
 function App() {
   return (
     <Router>
-      {" "}
       <NavBar />
+      <Popup />
       <div>
-        {" "}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/concerts" element={<ConcertList />} />
           <Route path="/sports" element={<SportList />} />
           <Route path="/shows" element={<SportList />} />
           <Route path="/festivals" element={<ConcertList />} />
-          {/* <Route path="/login" element={<Login />} />
-      <Route path="/forget" element={<ForgetPassW />} />
-      <Route path="/sms" element={<Sms />} />
-      <Route path="/signup" element={<SignUp />} />  */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/forget" element={<ForgetPassW />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/verify-code" element={<VerifyCode />} />
         </Routes>
         <FAQ />
         <Footer />
