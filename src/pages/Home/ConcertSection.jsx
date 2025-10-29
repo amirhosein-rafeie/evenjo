@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCategory } from "../../store/unifiedStore";
+import { setCategory } from "../../store/Store";
 import EventCard from "../../components/EventCard";
 
 const ConcertSection = () => {

@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import FilterBar from "../../components/FilterBar.jsx";
 import EventCard from "../../components/EventCard.jsx";
-import { setCategory } from "../../Store/unifiedStore.js";
+import { setCategory } from "../../Store/Store";
 
 const SportsList = () => {
   const dispatch = useDispatch();
