@@ -1,4 +1,3 @@
-// src/pages/ResetPassword.jsx
 import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -44,7 +43,6 @@ const ResetPassword = () => {
             users[userIndex].password = values.newPassword;
             localStorage.setItem("users", JSON.stringify(users));
 
-            // آپدیت currentUser
             ["currentUser"].forEach((key) => {
                 const stored = JSON.parse(localStorage.getItem(key) || sessionStorage.getItem(key) || "{}");
                 if (stored.email === emailOrPhone || stored.phone === emailOrPhone) {

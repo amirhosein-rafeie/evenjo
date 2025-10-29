@@ -10,7 +10,7 @@ import flag2 from "../../assets/img/Flag img/flag2.png";
 import PatternLog from "../../assets/PatternLog.png";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import { useNavigate } from "react-router-dom";
-import { showPopup } from "../components/features/popupSlice";
+import { showPopup } from "../../components/features/popupSlice";
 
 const ForgetPassW = () => {
     const dispatch = useDispatch();

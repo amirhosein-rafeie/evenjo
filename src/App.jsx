@@ -8,20 +8,17 @@ import SportList from "./pages/Sport/SportList.jsx";
 import FAQ from "./components/Faq.jsx";
 import Login from "./pages/Login/Login.jsx";
 import SignUp from "./pages/Login/SignUp.jsx";
-
-// import Shows from "./Pages/Shows.jsx";
-// import Concerts from "./Pages/Concerts.jsx";
-// import Sports from "./Pages/Sports.jsx";
-// import Festivals from "./Pages/Festivals.jsx";
-// import Sms from "./Pages/Sms.jsx"
+import ForgetPassW from "../src/pages/Login/ForgetPassW.jsx"
+import ResetPassword from "../src/pages/Login/ResetPassword.jsx"
+import VerifyCode from "../src/pages/Login/VerifyCode.jsx"
+import Popup from "./components/common/Popup.jsx";
 
 function App() {
   return (
     <Router>
-      {" "}
       <NavBar />
+      <Popup />
       <div>
-        {" "}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/concerts" element={<ConcertList />} />
@@ -29,9 +26,10 @@ function App() {
           <Route path="/shows" element={<SportList />} />
           <Route path="/festivals" element={<ConcertList />} />
           <Route path="/login" element={<Login />} />
-          {/* {/* <Route path="/forget" element={<ForgetPassW />} />
-      <Route path="/sms" element={<Sms />} /> */}
+          <Route path="/forget" element={<ForgetPassW />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/verify-code" element={<VerifyCode />} />
         </Routes>
         <FAQ />
         <Footer />
