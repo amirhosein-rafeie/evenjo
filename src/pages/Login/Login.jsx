@@ -119,7 +119,7 @@ const Login = () => {
                 src={PatternLog}
                 alt="Pattern"
                 className="w-150 absolute"
-                style={{ marginBottom: "420px" }}
+                style={{ marginBottom: "720px" }}
             />
 
             <div
@@ -180,6 +180,28 @@ const Login = () => {
                                     }
                                     variant="standard"
                                     disableUnderline
+                                    MenuProps={{
+                                        PaperProps: {
+                                            sx: {
+                                                backgroundColor: "#0a0a0a",
+                                                color: "#fff",
+                                                border: "1px solid #a855f7",
+                                                borderRadius: "10px",
+                                                boxShadow: "0 0 10px rgba(168,85,247,0.6)",
+                                                "& .MuiMenuItem-root": {
+                                                    backgroundColor: "#0a0a0a",
+                                                    color: "#fff",
+                                                    "&.Mui-selected": {
+                                                        backgroundColor: "#3b0764 !important",
+                                                    },
+                                                    "&:hover": {
+                                                        backgroundColor: "#4c1d95 !important",
+                                                    },
+                                                },
+                                            },
+                                        },
+                                        disablePortal: true,
+                                    }}
                                     sx={{
                                         color: "white",
                                         fontFamily: "Inter, sans-serif",
@@ -187,6 +209,7 @@ const Login = () => {
                                         minWidth: "70px",
                                     }}
                                 >
+
                                     <MenuItem value="Eng">
                                         <div className="flex items-center gap-1">
                                             <img src={flag1} style={{ height: "14px" }} alt="Eng" />

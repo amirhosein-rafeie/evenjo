@@ -30,8 +30,7 @@ import PatternLog from "../../assets/PatternLog.png";
 const SignUp = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const { form: authForm, country, showPassword, loginMethod } = useSelector((s) => s.auth);
+    const { form: authForm, country, showPassword, signUpMethod } = useSelector((s) => s.auth);
     const users = useSelector((s) => s.users.list || []);
 
     const commonSx = {
@@ -46,7 +45,7 @@ const SignUp = () => {
     };
 
     const formik = useFormik({
-        enableReinitialize: false,
+        enableReinitialize: true,
         initialValues: {
             firstName: authForm.firstName || "",
             lastName: authForm.lastName || "",
@@ -58,27 +57,15 @@ const SignUp = () => {
         validationSchema: Yup.object({
             firstName: Yup.string().required("First name is required"),
             lastName: Yup.string().required("Last name is required"),
-            ...(loginMethod === "phone"
-                ? {
-                    phone: Yup.string()
-                        .matches(/^\d+$/, "Just enter numbers")
-                        .min(8, "Must be at least 8 digits")
-                        .required("Phone number is required"),
-                }
-                : {
-                    email: Yup.string()
-                        .email("Invalid email address")
-                        .required("Email is required"),
-                }),
-            password: Yup.string()
-                .min(6, "Password must be at least 6 characters")
-                .required("Password is required"),
+            ...(signUpMethod === "phone"
+                ? { phone: Yup.string().matches(/^\d+$/, "Just enter numbers").min(8, "Must be at least 8 digits").required("Phone number is required") }
+                : { email: Yup.string().email("Invalid email address").required("Email is required") }
+            ),
+            password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
         }),
         onSubmit: (values, { resetForm: resetFormik }) => {
             const duplicate = users.find(
-                (u) =>
-                    (values.email && u.email === values.email) ||
-                    (values.phone && u.phone === values.phone)
+                (u) => (values.email && u.email === values.email) || (values.phone && u.phone === values.phone)
             );
             if (duplicate) {
                 alert("A user with this email or phone already exists.");
@@ -119,19 +106,19 @@ const SignUp = () => {
     };
 
     const handleSignUpMethod = (method) => {
-        dispatch(setField({ field: "loginMethod", value: method }));
+        dispatch(setField({ field: "signUpMethod", value: method }));
     };
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center text-white p-4 relative">
             <div
                 className="absolute inset-0 w-[682px] h-[382px] top1/2 left-1/2
-        -translate-x-1/2 -translate-y-1/2 rounded-full
-        bg-[radial-gradient(circle,_rgba(193,79,230,0.7)_35%,_rgba(0,0,0,0)_70%)]
-        blur-[200px] z-0 overflow-hidden"
+          -translate-x-1/2 -translate-y-1/2 rounded-full
+          bg-[radial-gradient(circle,_rgba(193,79,230,0.7)_35%,_rgba(0,0,0,0)_70%)]
+          blur-[200px] z-0 overflow-hidden"
             ></div>
 
-            <img src={PatternLog} alt="Pattern" className="w-150 absolute" style={{ marginBottom: "520px" }} />
+            <img src={PatternLog} alt="Pattern" className="w-150 absolute" style={{ marginBottom: "720px" }} />
 
             <div className="flex flex-col items-center justify-center gap-8 z-10" style={{ marginTop: "130px" }}>
                 <div className="font-normal text-4xl font-lobster">
@@ -147,7 +134,7 @@ const SignUp = () => {
                     <button
                         type="button"
                         onClick={() => handleSignUpMethod("email")}
-                        className={`flex items-center justify-center px-4 py-2 w-50 h-8 rounded-[12px] ${loginMethod === "email" ? "bg-[#454545]" : ""
+                        className={`flex items-center justify-center px-4 py-2 w-50 h-8 rounded-[12px] ${signUpMethod === "email" ? "bg-[#454545]" : ""
                             }`}
                     >
                         Email
@@ -155,7 +142,7 @@ const SignUp = () => {
                     <button
                         type="button"
                         onClick={() => handleSignUpMethod("phone")}
-                        className={`flex items-center justify-center px-4 py-2 h-8 w-50 rounded-[12px] ${loginMethod === "phone" ? "bg-[#454545]" : ""
+                        className={`flex items-center justify-center px-4 py-2 h-8 w-50 rounded-[12px] ${signUpMethod === "phone" ? "bg-[#454545]" : ""
                             }`}
                     >
                         Phone number
@@ -216,7 +203,7 @@ const SignUp = () => {
                     />
                 </div>
 
-                {loginMethod === "phone" ? (
+                {signUpMethod === "phone" ? (
                     <div className="mb-4">
                         <div className="flex gap-2">
                             <div
@@ -228,6 +215,28 @@ const SignUp = () => {
                                     onChange={(e) => dispatch(setField({ field: "country", value: e.target.value }))}
                                     variant="standard"
                                     disableUnderline
+                                    MenuProps={{
+                                        PaperProps: {
+                                            sx: {
+                                                backgroundColor: "#0a0a0a",
+                                                color: "#fff",
+                                                border: "1px solid #a855f7",
+                                                borderRadius: "10px",
+                                                boxShadow: "0 0 10px rgba(168,85,247,0.6)",
+                                                "& .MuiMenuItem-root": {
+                                                    backgroundColor: "#0a0a0a",
+                                                    color: "#fff",
+                                                    "&.Mui-selected": {
+                                                        backgroundColor: "#3b0764 !important",
+                                                    },
+                                                    "&:hover": {
+                                                        backgroundColor: "#4c1d95 !important",
+                                                    },
+                                                },
+                                            },
+                                        },
+                                        disablePortal: true,
+                                    }}
                                     sx={{
                                         color: "white",
                                         fontFamily: "Inter, sans-serif",
@@ -235,6 +244,7 @@ const SignUp = () => {
                                         minWidth: "70px",
                                     }}
                                 >
+
                                     <MenuItem value="Eng">
                                         <div className="flex items-center gap-1">
                                             <img src={flag1} style={{ height: "14px" }} alt="Eng Flag" />
