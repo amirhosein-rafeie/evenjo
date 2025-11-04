@@ -41,25 +41,24 @@ export default function HomePage() {
           ></div>
 
           <div
-            className="flex flex-col gap-x-[<10px>] z-10 mt-40 px-4 w-full max-w-6xl"
-            style={{ marginTop: "100px" }}
-          >
-            <h1 className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            className="flex flex-col z-10 mt-40 px-4 w-full max-w-6xl">
+            <h1 className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
               What <span className="text-[#D580F2]">Concert</span> would
               <br /> you like to go to?
             </h1>
-            <h3 className="text-white text-sm sm:text-base md:text-lg">
+            <div className="text-2xl text-white sm:text-base md:text-lg">
+
               More than 100 concerts in different countries are now available to
               you.
-            </h3>
+
+            </div>
           </div>
 
           <div
             className="flex flex-col gap-5 p-4 sm:p-6 rounded-[21px] w-[90%] sm:w-full max-w-5xl mx-auto text-white mt-12 text-xl bg-[#1B1B1BCC] border border-[#303030] z-10"
-            style={{ marginTop: "70px" }}
-          >
-            <div className="w-full px-2 sm:px-4" style={{ marginTop: "30px" }}>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+            style={{ marginTop: "90px" }} >
+            <div className="w-full px-2 sm:px-4" style={{ marginTop: "5px" }}>
+              <div className="grid grid-cols-2 sm:grid-cols-4 sm:gap-4 text-xl">
                 {[
                   { icon: AudiotrackOutlined, text: "Concerts" },
                   { icon: TheaterComedyOutlined, text: "Shows" },
@@ -79,14 +78,13 @@ export default function HomePage() {
 
             <hr className="border-[#303030] mb-2 sm:mb-4" />
 
-            <div className="px-1 sm:px-8">
+            <div className="px-1 sm:px-8" style={{ marginTop: "-30px" }}>
               <div
-                className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr_auto] gap-4 sm:gap-6 items-center mt-2 sm:mt-4"
-                style={{ marginBottom: "30px" }}
+                className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr_auto] sm:gap-6 items-center mt-2 sm:mt-4"
               >
                 <div
-                  className="flex items-center justify-start gap-3 h-14 sm:h-16 px-2 sm:px-3"
-                  style={{ marginLeft: "40px" }}
+                  className="flex items-center justify-start h-14 sm:h-16 px-2 sm:px-3"
+                  style={{ marginLeft: "20px" }}
                 >
                   <Icon
                     component={WidgetsOutlined}
@@ -99,7 +97,7 @@ export default function HomePage() {
                     </div>
                     <div
                       className="text-gray-400 text-xs sm:text-sm leading-tight"
-                      style={{ marginLeft: "15px" }}
+                      style={{ marginLeft: "5px" }}
                     >
                       Event Type
                     </div>

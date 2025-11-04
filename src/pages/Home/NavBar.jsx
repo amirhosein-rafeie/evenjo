@@ -36,7 +36,7 @@ export default function NavBar() {
       <AppBar
         elevation={0}
         sx={{
-          backgroundColor: "rgba(80, 80, 80, 0.07)",
+          backgroundColor: "rgba(23, 23, 23, 0.45)",
           boxShadow: "none",
           fontFamily: "Inter, sans-serif",
           display: "flex",
@@ -122,7 +122,6 @@ export default function NavBar() {
               </ListItemButton>
             ))}
           </List>
-
           <div className="flex flex-col gap-4 mt-6">
             <Select
               value={country}

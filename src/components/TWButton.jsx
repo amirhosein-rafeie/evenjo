@@ -7,7 +7,7 @@ const TWButton = styled(Button)(() => ({
   fontSize: "16px",
   borderRadius: "8px",
   textTransform: "lowercase",
-  maxWidth: "5px"
+  width: "80px"
 }));
 
 export default TWButton;
