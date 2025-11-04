@@ -18,7 +18,7 @@ import flag2 from "../../assets/img/Flag img/flag2.png";
 import FormControl from "@mui/material/FormControl";
 
 export default function NavBar() {
-  const [country, setCountry] = useState("En");
+  const [country, setCountry] = useState("Eng");
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 

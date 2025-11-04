@@ -1,7 +1,8 @@
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import SendIcon from "@mui/icons-material/Send";
-import farnaz from "../assets/img/farnaz.png";
+import farnaz from "../../assets/img/OurTeam img/farnaz.png";
+import mohammadhosein from "../../assets/img/OurTeam img/mohammadhosein.jpg"
 
 export default function TeamPage() {
     return (
@@ -30,13 +31,13 @@ export default function TeamPage() {
                         </div>
 
                         <p className="text-gray-300 text-[1.05rem] leading-relaxed">
-                            Hi! I'm a Front-end Developer passionate about building modern, user-friendly, and optimized websites. Working with computers has always inspired me, and creating intuitive user interfaces using technologies like HTML, CSS, JavaScript, React, and Tailwind CSS allows me to bring ideas to life. I love learning new technologies and continuously improving my skills to stay up-to-date. Besides coding, I’m interested in music and gaming, and I enjoy exploring creative digital experiences. My goal is to always deliver clean code, smooth performance, and an excellent user experience in every project I work on.
+                            Hi! I'm a Front-end Developer passionate about creating modern, user-friendly websites using HTML, CSS, JavaScript, React, and Tailwind CSS. I enjoy learning new technologies and delivering clean, efficient code with great user experiences. Outside of coding, I love music, gaming, and exploring creative digital experiences.
                         </p>
 
                         <div className="flex flex-wrap gap-6 text-purple-400 text-base pt-2">
                             <a href="#" className="flex items-center gap-2 hover:text-purple-200 transition"><EmailIcon fontSize="small" />farnazseyedi912@gmail.com</a>
-                            <a href="#" className="flex items-center gap-2 hover:text-purple-200 transition"><GitHubIcon fontSize="small" />farnaz</a>
-                            <a href="#" className="flex items-center gap-2 hover:text-purple-200 transition"><SendIcon fontSize="small" />Reverie_Fs</a>
+                            <a href="#" className="flex items-center gap-2 hover:text-purple-200 transition"><GitHubIcon fontSize="small" />farnazseyedi</a>
+                            <a href="#" className="flex items-center gap-2 hover:text-purple-200 transition"><SendIcon fontSize="small" />@Reverie_Fs</a>
                         </div>
                     </div>
                 </div>
@@ -44,7 +45,7 @@ export default function TeamPage() {
                 <div className="relative flex flex-col sm:flex-row-reverse items-center gap-8 bg-[#100013] p-10 rounded-3xl shadow-xl group">
 
                     <div className="relative flex-shrink-0">
-                        <div className="w-40 h-40 md:w-48 md:h-48 rounded-full bg-gray-600 shadow-xl overflow-hidden border-2 border-purple-400 group-hover:scale-105 transition"><img ></img></div>
+                        <div className="w-40 h-40 md:w-48 md:h-48 rounded-full bg-gray-600 shadow-xl overflow-hidden border-2 border-purple-400 group-hover:scale-105 transition"><img src={mohammadhosein} ></img></div>
                         <span className="absolute top-1 right-1 w-3 h-3 bg-purple-400 rounded-full" />
                         <span className="absolute bottom-1 left-1 w-2.5 h-2.5 bg-purple-300 rounded-full opacity-90" />
                     </div>
@@ -56,18 +57,19 @@ export default function TeamPage() {
                             </span>
 
                             <h2 className="text-4xl font-extrabold tracking-tight leading-tight">
-                                Mohammad Hossein<br />Ebrahimi
+                                M.H.Ebrahimi
                             </h2>
+
                         </div>
 
                         <p className="text-gray-300 text-[1.05rem] leading-relaxed">
-
+                            Hi! my name is Mohammad Hossein. I am a frontend developer passionate about building responsive, user-friendly web applications with React. I enjoy turning design concepts into seamless experiences and continuously learning new technologies. I focus on writing clean, maintainable code and collaborating effectively to deliver high-quality projects.
                         </p>
 
                         <div className="flex flex-wrap gap-6 text-purple-400 text-base pt-2">
-                            <a href="#" className="flex items-center gap-2 hover:text-purple-200 transition"><EmailIcon fontSize="small" />Email</a>
-                            <a href="#" className="flex items-center gap-2 hover:text-purple-200 transition"><GitHubIcon fontSize="small" />GitHub</a>
-                            <a href="#" className="flex items-center gap-2 hover:text-purple-200 transition"><SendIcon fontSize="small" />Username</a>
+                            <a href="#" className="flex items-center gap-2 hover:text-purple-200 transition"><EmailIcon fontSize="small" />Mhebrahimi.dev@gmail.com</a>
+                            <a href="#" className="flex items-center gap-2 hover:text-purple-200 transition"><GitHubIcon fontSize="small" />MHEbrahimiii</a>
+                            <a href="#" className="flex items-center gap-2 hover:text-purple-200 transition"><SendIcon fontSize="small" />@Mhebrahimiiii</a>
                         </div>
                     </div>
                 </div>
