@@ -24,7 +24,6 @@ export default function HomePage() {
 
   return (
     <>
-      <NavBar className="sticky"></NavBar>
       <div className=" max-w-screen flex flex-col gap-4 justify-center">
         <div
           className="relative min-w-full min-h-screen flex flex-col items-center justify-center text-center overflow-hidden"
