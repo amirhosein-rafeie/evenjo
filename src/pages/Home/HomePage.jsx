@@ -134,15 +134,37 @@ export default function HomePage() {
                       value={selectedDate}
                       onChange={(newValue) => setSelectedDate(newValue)}
                       slotProps={{
+                        popper: {
+                          sx: {
+                            '& .MuiPaper-root': {
+                              backgroundColor: '#212121',
+                              color: '#ffffff',
+                            },
+                            '& .MuiPickersDay-root': {
+                              color: '#ffffff',
+                            },
+                            '& .MuiPickersDay-root.Mui-selected': {
+                              backgroundColor: '#424242',
+                            },
+                          },
+                        },
                         textField: {
-                          InputLabelProps: { style: { color: "white" } },
-                          InputProps: {
-                            style: { color: "white" },
-                            sx: { "& .MuiSvgIcon-root": { color: "white" } },
+                          sx: {
+                            '& .MuiInputLabel-root': { color: '#ffffff' },
+                            '& .MuiOutlinedInput-root': {
+                              color: '#ffffff',
+                              '& .MuiSvgIcon-root': {
+                                color: '#ffffff',
+                              },
+                              '& .MuiOutlinedInput-notchedOutline': {
+                                borderColor: '#ffffff',
+                              },
+                            },
                           },
                         },
                       }}
                     />
+
                   </LocalizationProvider>
                 </div>
 
