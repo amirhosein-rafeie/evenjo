@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HomeBac from "../../assets/HomeBac.jpg";
-import NavBar from "./NavBar.jsx";
 import {
   AttractionsOutlined,
   FitnessCenterOutlined,
@@ -19,12 +18,36 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
+
 export default function HomePage() {
   const [selectedDate, setSelectedDate] = useState(null);
+  const [locationSearch, setLocationSearch] = useState("");
+  const [position, setPosition] = useState(null);
+
+  useEffect(() => {
+    if (position) {
+      console.log("Position detected:", position, locationSearch);
+    }
+  },);
+
+  const handleUseMyLocation = () => {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const coords = {
+          latitude: pos.coords.latitude,
+          longitude: pos.coords.longitude,
+        };
+        setPosition(coords);
+        setLocationSearch(`${coords.latitude}, ${coords.longitude}`);
+      },
+      (err) => {
+        console.error("Location error:", err);
+      }
+    );
+  };
 
   return (
     <>
-      <NavBar className="sticky"></NavBar>
       <div className=" max-w-screen flex flex-col gap-4 justify-center">
         <div
           className="relative min-w-full min-h-screen flex flex-col items-center justify-center text-center overflow-hidden"
@@ -41,25 +64,24 @@ export default function HomePage() {
           ></div>
 
           <div
-            className="flex flex-col gap-x-[<10px>] z-10 mt-40 px-4 w-full max-w-6xl"
-            style={{ marginTop: "100px" }}
-          >
-            <h1 className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            className="flex flex-col z-10 mt-40 px-4 w-full max-w-6xl">
+            <h1 className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
               What <span className="text-[#D580F2]">Concert</span> would
               <br /> you like to go to?
             </h1>
-            <h3 className="text-white text-sm sm:text-base md:text-lg">
+            <div className="text-2xl text-white sm:text-base md:text-lg">
+
               More than 100 concerts in different countries are now available to
               you.
-            </h3>
+
+            </div>
           </div>
 
           <div
             className="flex flex-col gap-5 p-4 sm:p-6 rounded-[21px] w-[90%] sm:w-full max-w-5xl mx-auto text-white mt-12 text-xl bg-[#1B1B1BCC] border border-[#303030] z-10"
-            style={{ marginTop: "70px" }}
-          >
-            <div className="w-full px-2 sm:px-4" style={{ marginTop: "30px" }}>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+            style={{ marginTop: "90px" }} >
+            <div className="w-full px-2 sm:px-4" style={{ marginTop: "5px" }}>
+              <div className="grid grid-cols-2 sm:grid-cols-4 sm:gap-4 text-xl">
                 {[
                   { icon: AudiotrackOutlined, text: "Concerts" },
                   { icon: TheaterComedyOutlined, text: "Shows" },
@@ -79,14 +101,13 @@ export default function HomePage() {
 
             <hr className="border-[#303030] mb-2 sm:mb-4" />
 
-            <div className="px-1 sm:px-8">
+            <div className="px-1 sm:px-8" style={{ marginTop: "-30px" }}>
               <div
-                className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr_auto] gap-4 sm:gap-6 items-center mt-2 sm:mt-4"
-                style={{ marginBottom: "30px" }}
+                className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr_auto] sm:gap-6 items-center mt-2 sm:mt-4"
               >
                 <div
-                  className="flex items-center justify-start gap-3 h-14 sm:h-16 px-2 sm:px-3"
-                  style={{ marginLeft: "40px" }}
+                  className="flex items-center justify-start h-14 sm:h-16 px-2 sm:px-3"
+                  style={{ marginLeft: "20px" }}
                 >
                   <Icon
                     component={WidgetsOutlined}
@@ -99,14 +120,14 @@ export default function HomePage() {
                     </div>
                     <div
                       className="text-gray-400 text-xs sm:text-sm leading-tight"
-                      style={{ marginLeft: "15px" }}
+                      style={{ marginLeft: "5px" }}
                     >
                       Event Type
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-start gap-3 border-t sm:border-t-0 sm:border-l border-[#303030] pl-0 sm:pl-6 h-14 sm:h-16 px-2 sm:px-3">
+                <button onClick={handleUseMyLocation} className="flex items-center justify-start cursor-pointer gap-3 border-t sm:border-t-0 sm:border-l border-[#303030] pl-0 sm:pl-6 h-14 sm:h-16 px-2 sm:px-3">
                   <Icon
                     component={FmdGoodOutlined}
                     fontSize="large"
@@ -120,7 +141,7 @@ export default function HomePage() {
                       Location
                     </div>
                   </div>
-                </div>
+                </button>
 
                 <div className="flex items-center justify-start gap-3 border-t sm:border-t-0 sm:border-l border-[#303030] pl-0 sm:pl-6 h-14 sm:h-16 px-2 sm:px-3">
                   <Icon
@@ -136,29 +157,46 @@ export default function HomePage() {
                       slotProps={{
                         popper: {
                           sx: {
-                            '& .MuiPaper-root': {
-                              backgroundColor: '#212121',
-                              color: '#ffffff',
+                            "& .MuiPaper-root": {
+                              backgroundColor: "#212121",
+                              color: "#ffffff",
                             },
-                            '& .MuiPickersDay-root': {
-                              color: '#ffffff',
+
+                            "& .MuiPickersDay-root": {
+                              color: "#ffffff",
                             },
-                            '& .MuiPickersDay-root.Mui-selected': {
-                              backgroundColor: '#424242',
+
+                            "& .MuiPickersDay-root.Mui-selected": {
+                              backgroundColor: "#C14FE6 !important",
+                              color: "#ffffff !important",
+                            },
+
+                            "& .MuiPickersDay-root.MuiPickersDay-today": {
+                              border: "1px solid #C14FE6 !important",
+                              color: "#ffffff !important",
+                            },
+
+                            "& .MuiPickersDay-root:hover": {
+                              backgroundColor: "#9c27b0 !important",
                             },
                           },
                         },
                         textField: {
                           sx: {
-                            '& .MuiInputLabel-root': { color: '#ffffff' },
-                            '& .MuiOutlinedInput-root': {
-                              color: '#ffffff',
-                              '& .MuiSvgIcon-root': {
-                                color: '#ffffff',
+                            "& .MuiInputLabel-root": {
+                              color: "#ffffff !important",
+                            },
+                            "& .MuiOutlinedInput-root": {
+                              color: "#ffffff !important",
+                              "& .MuiSvgIcon-root": {
+                                color: "#ffffff !important",
                               },
-                              '& .MuiOutlinedInput-notchedOutline': {
-                                borderColor: '#ffffff',
+                              "& .MuiOutlinedInput-notchedOutline": {
+                                borderColor: "#ffffff !important",
                               },
+                            },
+                            "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                              borderColor: "#ffffff !important",
                             },
                           },
                         },
