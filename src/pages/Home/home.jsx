@@ -9,7 +9,6 @@ const SportSection = lazy(() => import("../../pages/Home/SportSection.jsx"));
 const Ability = lazy(() => import("../Home/Ability.jsx"));
 const TopSingerSlider = lazy(() => import("../Home/TopSingerSlider.jsx"));
 const CommentSlider = lazy(() => import("../Home/CommentSlider.jsx"));
-const Footer = lazy(() => import("../Home/Footer.jsx"));
 
 const Loading = () => (
   <div style={{
@@ -30,7 +29,6 @@ const Home = () => {
         <TopSingerSlider />
         <Ability />
         <CommentSlider />
-        <Footer />
       </ThemeProvider>
     </Suspense>
   );
