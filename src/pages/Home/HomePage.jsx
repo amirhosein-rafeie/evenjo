@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import HomeBac from "../../assets/HomeBac.jpg";
 import {
   AttractionsOutlined,
@@ -20,31 +21,38 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 
 export default function HomePage() {
+
   const [selectedDate, setSelectedDate] = useState(null);
-  const [locationSearch, setLocationSearch] = useState("");
-  const [position, setPosition] = useState(null);
 
-  useEffect(() => {
-    if (position) {
-      console.log("Position detected:", position, locationSearch);
+  const targetRef = useRef(null);
+
+  const handleClick = () => {
+    if (targetRef.current) {
+      targetRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  },);
-
-  const handleUseMyLocation = () => {
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        const coords = {
-          latitude: pos.coords.latitude,
-          longitude: pos.coords.longitude,
-        };
-        setPosition(coords);
-        setLocationSearch(`${coords.latitude}, ${coords.longitude}`);
-      },
-      (err) => {
-        console.error("Location error:", err);
-      }
-    );
   };
+
+  const handleLocationClick = () => {
+    if (navigator && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          console.log("lat:", pos.coords.latitude, "lng:", pos.coords.longitude);
+        },
+        (err) => {
+          console.warn("geolocation error", err);
+        }
+      );
+    } else {
+      console.warn("Geolocation not supported");
+    }
+  };
+
+  const menuItems = [
+    { icon: AudiotrackOutlined, text: "Concerts", to: "/concerts" },
+    { icon: TheaterComedyOutlined, text: "Shows", to: "/shows" },
+    { icon: FitnessCenterOutlined, text: "Sports", to: "/sports" },
+    { icon: AttractionsOutlined, text: "Festivals", to: "/festivals" },
+  ];
 
   return (
     <>
@@ -82,19 +90,15 @@ export default function HomePage() {
             style={{ marginTop: "90px" }} >
             <div className="w-full px-2 sm:px-4" style={{ marginTop: "5px" }}>
               <div className="grid grid-cols-2 sm:grid-cols-4 sm:gap-4 text-xl">
-                {[
-                  { icon: AudiotrackOutlined, text: "Concerts" },
-                  { icon: TheaterComedyOutlined, text: "Shows" },
-                  { icon: FitnessCenterOutlined, text: "Sports" },
-                  { icon: AttractionsOutlined, text: "Festivals" },
-                ].map((item, i) => (
-                  <button
+                {menuItems.map((item, i) => (
+                  <Link
                     key={i}
+                    to={item.to}
                     className="flex justify-center items-center gap-2 h-10 sm:h-12 px-4 sm:px-5 rounded-full border-2 border-transparent hover:border-purple-500 hover:text-purple-500 transition text-xs sm:text-sm md:text-base"
                   >
                     <Icon component={item.icon} fontSize="small" />
                     <span>{item.text}</span>
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -127,7 +131,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <button onClick={handleUseMyLocation} className="flex items-center justify-start cursor-pointer gap-3 border-t sm:border-t-0 sm:border-l border-[#303030] pl-0 sm:pl-6 h-14 sm:h-16 px-2 sm:px-3">
+                <div onClick={handleLocationClick} className="cursor-pointer flex items-center justify-start gap-3 border-t sm:border-t-0 sm:border-l border-[#303030] pl-0 sm:pl-6 h-14 sm:h-16 px-2 sm:px-3">
                   <Icon
                     component={FmdGoodOutlined}
                     fontSize="large"
@@ -141,7 +145,7 @@ export default function HomePage() {
                       Location
                     </div>
                   </div>
-                </button>
+                </div>
 
                 <div className="flex items-center justify-start gap-3 border-t sm:border-t-0 sm:border-l border-[#303030] pl-0 sm:pl-6 h-14 sm:h-16 px-2 sm:px-3">
                   <Icon
@@ -150,60 +154,24 @@ export default function HomePage() {
                     className="text-gray-400"
                   />
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
+
                     <DatePicker
                       label="When Date"
                       value={selectedDate}
                       onChange={(newValue) => setSelectedDate(newValue)}
                       slotProps={{
-                        popper: {
-                          sx: {
-                            "& .MuiPaper-root": {
-                              backgroundColor: "#212121",
-                              color: "#ffffff",
-                            },
-
-                            "& .MuiPickersDay-root": {
-                              color: "#ffffff",
-                            },
-
-                            "& .MuiPickersDay-root.Mui-selected": {
-                              backgroundColor: "#C14FE6 !important",
-                              color: "#ffffff !important",
-                            },
-
-                            "& .MuiPickersDay-root.MuiPickersDay-today": {
-                              border: "1px solid #C14FE6 !important",
-                              color: "#ffffff !important",
-                            },
-
-                            "& .MuiPickersDay-root:hover": {
-                              backgroundColor: "#9c27b0 !important",
-                            },
-                          },
-                        },
                         textField: {
-                          sx: {
-                            "& .MuiInputLabel-root": {
-                              color: "#ffffff !important",
-                            },
-                            "& .MuiOutlinedInput-root": {
-                              color: "#ffffff !important",
-                              "& .MuiSvgIcon-root": {
-                                color: "#ffffff !important",
-                              },
-                              "& .MuiOutlinedInput-notchedOutline": {
-                                borderColor: "#ffffff !important",
-                              },
-                            },
-                            "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
-                              borderColor: "#ffffff !important",
-                            },
+                          InputLabelProps: { style: { color: "white" } },
+                          InputProps: {
+                            style: { color: "white" },
+                            sx: { "& .MuiSvgIcon-root": { color: "white" } },
                           },
                         },
                       }}
                     />
 
                   </LocalizationProvider>
+
                 </div>
 
                 <div className="flex justify-center sm:justify-end">
@@ -222,13 +190,13 @@ export default function HomePage() {
             className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-gray-400 text-xs sm:text-sm mt-8 sm:mt-10 z-10 w-[90%] sm:w-auto"
             style={{ marginTop: "15px" }}
           >
-            <button className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
+            <button onClick={handleClick} className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
               <Icon component={BookmarkBorderOutlined} /> Book Anytime
             </button>
-            <button className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
+            <button onClick={handleClick} className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
               <Icon component={ConfirmationNumberOutlined} /> Refundable Tickets
             </button>
-            <button className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
+            <button onClick={handleClick} className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
               <Icon component={CelebrationOutlined} /> Smart Deals
             </button>
           </div>
