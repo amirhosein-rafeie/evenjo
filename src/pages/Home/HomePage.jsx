@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import HomeBac from "../../assets/HomeBac.jpg";
 import {
@@ -19,18 +19,17 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
-
-export default function HomePage() {
+export default function HomePage({ abilityRef }) {
 
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const targetRef = useRef(null);
-
-  const handleClick = () => {
-    if (targetRef.current) {
-      targetRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleScrollAbility = () => {
+    if (!abilityRef.current) return;
+    const rect = abilityRef.current.getBoundingClientRect();
+    const y = rect.top + window.scrollY - 120;
+    window.scrollTo({ top: y, behavior: "smooth" });
   };
+
 
   const handleLocationClick = () => {
     if (navigator && navigator.geolocation) {
@@ -190,13 +189,13 @@ export default function HomePage() {
             className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-gray-400 text-xs sm:text-sm mt-8 sm:mt-10 z-10 w-[90%] sm:w-auto"
             style={{ marginTop: "15px" }}
           >
-            <button onClick={handleClick} className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
+            <button onClick={handleScrollAbility} className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
               <Icon component={BookmarkBorderOutlined} /> Book Anytime
             </button>
-            <button onClick={handleClick} className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
+            <button onClick={handleScrollAbility} className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
               <Icon component={ConfirmationNumberOutlined} /> Refundable Tickets
             </button>
-            <button onClick={handleClick} className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
+            <button onClick={handleScrollAbility} className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
               <Icon component={CelebrationOutlined} /> Smart Deals
             </button>
           </div>

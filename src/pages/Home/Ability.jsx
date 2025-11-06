@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import refundImg from "../../assets/img/ability img/return-on-investment_5950014 (Traced).png";
 import hotdealImg from "../../assets/img/ability img/badge_9886290 1 (Traced).png";
 import clockImg from "../../assets/img/ability img/service-24-hour_17845784 1 (Traced).png";
@@ -5,9 +6,9 @@ import vector1 from "../../assets/img/ability img/vector 1.png";
 import vector2 from "../../assets/img/ability img/vector 3.png";
 import vector3 from "../../assets/img/ability img/Vector (2).png";
 
-export default function Ability() {
+const Ability = forwardRef((props, ref) => {
   return (
-    <section className="max-w-[1200px] mx-auto ">
+    <section ref={ref} className="max-w-[1200px] mx-auto mt-20">
       <div className="grid grid-cols-6 gap-6">
         <div className="flex flex-col col-span-3 gap-6">
           <div className="relative rounded-2xl border bg-gradient-to-r from-shade-ws4 border-neutral-n700 bg-neutral-n1000">
@@ -36,7 +37,7 @@ export default function Ability() {
             </div>
           </div>
 
-          <div className="relative overflow-hidden rounded-2xl border  border-neutral-n700 bg-neutral-n1000">
+          <div className="relative overflow-hidden rounded-2xl border border-neutral-n700 bg-neutral-n1000">
             <div className=" bg-gradient-to-r from-shade-ws4 absolute inset-0 pointer-events-none">
               <img
                 src={vector2}
@@ -63,7 +64,7 @@ export default function Ability() {
           </div>
         </div>
 
-        <div className=" relative col-span-3 overflow-hidden rounded-2xl border border-neutral-n700 bg-gradient-to-t from-shade-ws4 to-neutral-n1000 flex flex-col items-center justify-center text-center p-6 md:p-10">
+        <div className="relative col-span-3 overflow-hidden rounded-2xl border border-neutral-n700 bg-gradient-to-t from-shade-ws4 to-neutral-n1000 flex flex-col items-center justify-center text-center p-6 md:p-10">
           <div className="absolute inset-0 pointer-events-none">
             <img
               src={vector1}
@@ -91,4 +92,6 @@ export default function Ability() {
       </div>
     </section>
   );
-}
+});
+
+export default Ability;

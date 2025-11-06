@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useRef } from "react";
 import "../../index.css";
 import { ThemeProvider } from "@mui/material/styles";
 import darkTheme from "./darkTheme.js";
@@ -20,14 +20,16 @@ const Loading = () => (
 );
 
 const Home = () => {
+  const abilityRef = useRef(null);
+
   return (
     <Suspense fallback={<Loading />}>
       <ThemeProvider theme={darkTheme}>
-        <HomePage />
+        <HomePage abilityRef={abilityRef} />
         <ConcertSection />
         <SportSection />
         <TopSingerSlider />
-        <Ability />
+        <Ability ref={abilityRef} />
         <CommentSlider />
       </ThemeProvider>
     </Suspense>
