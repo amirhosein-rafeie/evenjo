@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import HomeBac from "../../assets/HomeBac.jpg";
-import NavBar from "./NavBar.jsx";
 import {
   AttractionsOutlined,
   FitnessCenterOutlined,
@@ -19,8 +19,39 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
-export default function HomePage() {
+export default function HomePage({ abilityRef }) {
+
   const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleScrollAbility = () => {
+    if (!abilityRef.current) return;
+    const rect = abilityRef.current.getBoundingClientRect();
+    const y = rect.top + window.scrollY - 120;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
+
+  const handleLocationClick = () => {
+    if (navigator && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          console.log("lat:", pos.coords.latitude, "lng:", pos.coords.longitude);
+        },
+        (err) => {
+          console.warn("geolocation error", err);
+        }
+      );
+    } else {
+      console.warn("Geolocation not supported");
+    }
+  };
+
+  const menuItems = [
+    { icon: AudiotrackOutlined, text: "Concerts", to: "/concerts" },
+    { icon: TheaterComedyOutlined, text: "Shows", to: "/shows" },
+    { icon: FitnessCenterOutlined, text: "Sports", to: "/sports" },
+    { icon: AttractionsOutlined, text: "Festivals", to: "/festivals" },
+  ];
 
   return (
     <>
@@ -66,11 +97,12 @@ export default function HomePage() {
                 ].map((item, i) => (
                   <button
                     key={i}
+                    to={item.to}
                     className="flex justify-center items-center gap-2 h-10 sm:h-12 px-4 sm:px-5 rounded-full border-2 border-transparent hover:border-purple-500 hover:text-purple-500 transition text-xs sm:text-sm md:text-base"
                   >
                     <Icon component={item.icon} fontSize="small" />
                     <span>{item.text}</span>
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -103,7 +135,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-start gap-3 border-t sm:border-t-0 sm:border-l border-[#303030] pl-0 sm:pl-6 h-14 sm:h-16 px-2 sm:px-3">
+                <div onClick={handleLocationClick} className="cursor-pointer flex items-center justify-start gap-3 border-t sm:border-t-0 sm:border-l border-[#303030] pl-0 sm:pl-6 h-14 sm:h-16 px-2 sm:px-3">
                   <Icon
                     component={FmdGoodOutlined}
                     fontSize="large"
@@ -126,6 +158,7 @@ export default function HomePage() {
                     className="text-gray-400"
                   />
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
+
                     <DatePicker
                       label="When Date"
                       value={selectedDate}
@@ -140,7 +173,9 @@ export default function HomePage() {
                         },
                       }}
                     />
+
                   </LocalizationProvider>
+
                 </div>
 
                 <div className="flex justify-center sm:justify-end">
@@ -159,13 +194,13 @@ export default function HomePage() {
             className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-gray-400 text-xs sm:text-sm mt-8 sm:mt-10 z-10 w-[90%] sm:w-auto"
             style={{ marginTop: "15px" }}
           >
-            <button className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
+            <button onClick={handleScrollAbility} className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
               <Icon component={BookmarkBorderOutlined} /> Book Anytime
             </button>
-            <button className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
+            <button onClick={handleScrollAbility} className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
               <Icon component={ConfirmationNumberOutlined} /> Refundable Tickets
             </button>
-            <button className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
+            <button onClick={handleScrollAbility} className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
               <Icon component={CelebrationOutlined} /> Smart Deals
             </button>
           </div>
