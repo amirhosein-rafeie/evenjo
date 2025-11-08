@@ -25,12 +25,12 @@ export default function Ability() {
                 className="w-28 md:w-36 lg:w-40 opacity-90"
               />
               <div className="text-center flex-1">
-                <h3 className="text-2xl md:text-3xl font-bold text-neutral-n100">
+                <h3 className="text-2xl md:text-3xl font-bold text-white">
                   Refundable <span className="text-primaryMain">Tickets</span>
                 </h3>
                 <p className="mt-2 text-sm text-neutral-n200 max-w-[34ch] mx-auto leading-relaxed">
-                  You can pay a ticket in 2 portions throughout a fixed period
-                  of time. Start invoicing for free.
+                  You can pay a ticket in 2 portions <br /> throughout a fixed period
+                  of<br /> time. Start invoicing for free.
                 </p>
               </div>
             </div>
@@ -51,12 +51,12 @@ export default function Ability() {
                 className="w-28 md:w-36 lg:w-40 opacity-90"
               />
               <div className="text-center flex-1">
-                <h3 className="text-2xl md:text-3xl font-bold text-neutral-n100">
+                <h3 className="text-2xl md:text-3xl font-bold text-white">
                   Smart <span className="text-primaryMain">Deals</span>
                 </h3>
                 <p className="mt-2 text-sm text-neutral-n200 max-w-[34ch] mx-auto leading-relaxed">
-                  You can pay a ticket in 2 portions throughout a fixed period
-                  of time. Start invoicing for free.
+                  You can pay a ticket in 2 portions <br />throughout a fixed period
+                  of<br /> time. Start invoicing for free.
                 </p>
               </div>
             </div>
@@ -72,7 +72,7 @@ export default function Ability() {
             />
           </div>
           <div className="relative z-10 flex flex-col items-center">
-            <h3 className="text-2xl md:text-3xl font-extrabold text-neutral-n100">
+            <h3 className="text-2xl md:text-3xl font-extrabold text-white">
               Book Anytime!
             </h3>
             <p className="mt-2 text-sm text-neutral-n200 max-w-[46ch]">

@@ -24,11 +24,11 @@ const Footer = () => {
       </div>
 
       <div className="flex items-center justify-center flex-row max-w-md gap-6">
-        <img src={Facebook} className="w-20px rounded-[50%] size-10" />
-        <img src={insta} className="w-20px rounded-[50%] size-10" />
-        <img src={inn} className="w-20px rounded-[50%] size-10" />
-        <img src={utube} className="w-20px rounded-[50%] size-10" />
-        <img src={Telegram} className="w-20px rounded-[50%] size-10" />
+        <a href=''><img src={Facebook} className='w-20px rounded-[50%] size-10' /></a>
+        <a href='https://www.instagram.com/farnaz_s_o/#'><img src={insta} className="w-20px rounded-[50%] size-10" /></a>
+        <a href=''><img src={inn} className='w-20px rounded-[50%] size-10' /></a>
+        <a href='' ><img src={utube} className='w-20px rounded-[50%] size-10' /></a>
+        <a href='' ><img src={Telegram} className='w-20px rounded-[50%] size-10' /></a>
       </div>
       <hr className="w-[20rem] h-0.5 mx-auto border-[#FFFFFF33] border-1 rounded-sm md:my-5 " />
 

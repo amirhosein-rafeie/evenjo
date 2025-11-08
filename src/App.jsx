@@ -12,6 +12,7 @@ import ForgetPassW from "../src/pages/Login/ForgetPassW.jsx"
 import ResetPassword from "../src/pages/Login/ResetPassword.jsx"
 import VerifyCode from "../src/pages/Login/VerifyCode.jsx"
 import Popup from "./components/common/Popup.jsx";
+import TeamPage from "./pages/OurTeam/TeamPage.jsx";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/verify-code" element={<VerifyCode />} />
+          <Route path="/our-team" element={<TeamPage />} />
         </Routes>
         <FAQ />
         <Footer />
