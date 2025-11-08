@@ -1,10 +1,10 @@
 import React from "react";
 import micro from "../../assets/micro.png";
-import Facebook from "../../assets/Facebook.png";
-import insta from "../../assets/insta.jpg";
-import inn from "../../assets/inn.png";
-import utube from "../../assets/utube.jpg";
-import Telegram from "../../assets/telegram.jpg";
+import Facebook from "../../assets/img/Footer img/Facebook.png";
+import insta from "../../assets/img/Footer img/insta.jpg";
+import inn from "../../assets/img/Footer img/inn.png";
+import utube from "../../assets/img/Footer img/utube.jpg";
+import Telegram from "../../assets/img/Footer img/telegram.jpg";
 
 const Footer = () => {
   return (
@@ -24,11 +24,11 @@ const Footer = () => {
       </div>
 
       <div className="flex items-center justify-center flex-row max-w-md gap-6">
-        <img src={Facebook} className="w-20px rounded-[50%] size-10" />
-        <img src={insta} className="w-20px rounded-[50%] size-10" />
-        <img src={inn} className="w-20px rounded-[50%] size-10" />
-        <img src={utube} className="w-20px rounded-[50%] size-10" />
-        <img src={Telegram} className="w-20px rounded-[50%] size-10" />
+        <a href=''><img src={Facebook} className='w-20px rounded-[50%] size-10' /></a>
+        <a href='https://www.instagram.com/farnaz_s_o/#'><img src={insta} className="w-20px rounded-[50%] size-10" /></a>
+        <a href=''><img src={inn} className='w-20px rounded-[50%] size-10' /></a>
+        <a href='' ><img src={utube} className='w-20px rounded-[50%] size-10' /></a>
+        <a href='' ><img src={Telegram} className='w-20px rounded-[50%] size-10' /></a>
       </div>
       <hr className="w-[20rem] h-0.5 mx-auto border-[#FFFFFF33] border-1 rounded-sm md:my-5 " />
 

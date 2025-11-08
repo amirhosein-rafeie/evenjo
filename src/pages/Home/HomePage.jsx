@@ -89,8 +89,13 @@ export default function HomePage({ abilityRef }) {
             style={{ marginTop: "90px" }} >
             <div className="w-full px-2 sm:px-4" style={{ marginTop: "5px" }}>
               <div className="grid grid-cols-2 sm:grid-cols-4 sm:gap-4 text-xl">
-                {menuItems.map((item, i) => (
-                  <Link
+                {[
+                  { icon: AudiotrackOutlined, text: "Concerts" },
+                  { icon: TheaterComedyOutlined, text: "Shows" },
+                  { icon: FitnessCenterOutlined, text: "Sports" },
+                  { icon: AttractionsOutlined, text: "Festivals" },
+                ].map((item, i) => (
+                  <button
                     key={i}
                     to={item.to}
                     className="flex justify-center items-center gap-2 h-10 sm:h-12 px-4 sm:px-5 rounded-full border-2 border-transparent hover:border-purple-500 hover:text-purple-500 transition text-xs sm:text-sm md:text-base"

@@ -4,7 +4,7 @@ import {
   setWhatFilter,
   filterEvents,
   setCategory,
-} from "../../Store/unifiedStore";
+} from "../../Store/store";
 import EventCard from "../../components/EventCard";
 
 const SportsSection = () => {
