@@ -1,12 +1,19 @@
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import EventCard from "../../components/EventCard.jsx";
+import { addToCart } from "../../components/features/cartSlice";
 import adele from "../../assets/img/concert img/adele.png";
 import Headimg from "../../assets/img/product img/adllle.jpg";
 import BannerImg from "../../assets/img/product img/banner.png";
 
 const LocationPinIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    className="shrink-0"
+  >
     <path
       d="M8 0C4.686 0 2 2.686 2 6c0 4.5 6 10 6 10s6-5.5 6-10c0-3.314-2.686-6-6-6zm0 8.5c-1.38 0-2.5-1.12-2.5-2.5S6.62 3.5 8 3.5 10.5 4.62 10.5 6 9.38 8.5 8 8.5z"
       fill="currentColor"
@@ -76,27 +83,31 @@ const BookmarkIcon = () => (
 export default function AdeleConcertPage() {
   const { id } = useParams();
   const eventId = parseInt(id);
+  const dispatch = useDispatch();
   const { events } = useSelector((state) => state.unified);
-  
-  const allEvents = [
-    ...(events?.concerts || []),
-    ...(events?.sports || [])
-  ];
-  
+
+  const allEvents = [...(events?.concerts || []), ...(events?.sports || [])];
+
   const selectedEvent = allEvents.find((e) => e.id === eventId);
-  
+
   if (!selectedEvent) {
     return (
       <div className="min-h-screen bg-neutral-n900 text-white flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Event not found</h1>
-          <p className="text-neutral-n400">The event you're looking for doesn't exist.</p>
+          <p className="text-neutral-n400">
+            The event you're looking for doesn't exist.
+          </p>
         </div>
       </div>
     );
   }
-  
+
   const isSportEvent = selectedEvent.type === "sport";
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(selectedEvent));
+  };
 
   const getEventTags = (index) => {
     const tags = [
@@ -112,7 +123,7 @@ export default function AdeleConcertPage() {
     .slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-neutral-n900 text-white">
+    <div className="min-h-screen text-white">
       <div className="relative w-full min-h-[70vh] flex items-end overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -126,11 +137,15 @@ export default function AdeleConcertPage() {
           <div className="flex flex-col lg:flex-row items-start gap-8 relative">
             <div className="flex-1 z-30">
               <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-4">
-                {selectedEvent?.artistName || selectedEvent?.sportName || selectedEvent?.name}
+                {selectedEvent?.artistName ||
+                  selectedEvent?.sportName ||
+                  selectedEvent?.name}
               </h1>
               <p className="text-xl md:text-2xl text-neutral-n200">
-                {isSportEvent 
-                  ? `Experience the thrill: ${selectedEvent?.artistName || selectedEvent?.sportName} - Live Sports Event.`
+                {isSportEvent
+                  ? `Experience the thrill: ${
+                      selectedEvent?.artistName || selectedEvent?.sportName
+                    } - Live Sports Event.`
                   : `A Night to Remember: ${selectedEvent?.artistName} Live with Her Greatest Hits.`}
               </p>
             </div>
@@ -141,7 +156,11 @@ export default function AdeleConcertPage() {
               <div className="w-64 h-96 rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src={selectedEvent?.img || adele}
-                  alt={selectedEvent?.artistName || selectedEvent?.sportName || selectedEvent?.name}
+                  alt={
+                    selectedEvent?.artistName ||
+                    selectedEvent?.sportName ||
+                    selectedEvent?.name
+                  }
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -152,8 +171,8 @@ export default function AdeleConcertPage() {
 
       <div className="max-w-7xl mx-auto py-10 px-4 sm:px-8 lg:px-16">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl font-semibold">All days and times</h2>
-          <button className="flex items-center gap-2 bg-transparent px-4 py-2 rounded-lg text-white hover:bg-neutral-n600 transition">
+          <h2 className="text-2xl ">All days and times</h2>
+          <button className="flex items-center gap-2 bg-transparent px-4 py-2 rounded-lg text-white  transition">
             <span className="text-tint-bt2">
               <LocationPinIcon />
             </span>
@@ -180,7 +199,8 @@ export default function AdeleConcertPage() {
                       <LocationPinIcon />
                     </span>
                     <span className="truncate">
-                      {event.location || "Fontainebleau Las Vegas - Complex, Las Vegas, Nevada"}
+                      {event.location ||
+                        "Fontainebleau Las Vegas - Complex, Las Vegas, Nevada"}
                     </span>
                   </div>
 
@@ -191,7 +211,10 @@ export default function AdeleConcertPage() {
                     <button className="text-neutral-n100 hover:text-white transition p-1.5">
                       <BookmarkIcon />
                     </button>
-                    <button className="px-4 py-[5px] rounded-full text-sm font-medium border border-tint-bt2 text-tint-bt2 hover:bg-neutral-n800 transition">
+                    <button
+                      onClick={handleAddToCart}
+                      className="px-4 py-[5px] rounded-full text-sm font-medium border border-tint-bt2 hover:bg-tint-wt transition"
+                    >
                       Get Tickets
                     </button>
                   </div>

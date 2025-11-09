@@ -1,6 +1,7 @@
 import usersReducer from "../components/features/usersSlice";
 import authReducer from "../components/features/authSlice";
 import popupReducer from "../components/features/popupSlice";
+import cartReducer from "../components/features/cartSlice";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 import { concerts, sports } from "../components/data";
@@ -204,6 +205,7 @@ const store = configureStore({
     users: usersReducer,
     auth: authReducer,
     popup: popupReducer,
+    cart: cartReducer,
   },
 });
 

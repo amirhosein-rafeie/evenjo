@@ -13,6 +13,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useNavigate } from "react-router-dom";
 import TWButton from "../../components/TWButton";
+import Cart from "../../components/Cart";
 import flag1 from "../../assets/img/Flag img/flag1.png";
 import flag2 from "../../assets/img/Flag img/flag2.png";
 
@@ -62,6 +63,7 @@ export default function NavBar() {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
+            <Cart />
             <Select
               value={country}
               onChange={(e) => setCountry(e.target.value)}
@@ -89,7 +91,8 @@ export default function NavBar() {
             <TWButton onClick={() => navigate("/signup")}>signup</TWButton>
           </div>
 
-          <div className="flex md:hidden">
+          <div className="flex md:hidden items-center gap-2">
+            <Cart />
             <IconButton onClick={toggleDrawer(true)} sx={{ color: "white" }}>
               <MenuIcon />
             </IconButton>
