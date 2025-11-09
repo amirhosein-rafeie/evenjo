@@ -5,6 +5,7 @@ import Home from "./pages/Home/home.jsx";
 import Footer from "./pages/Home/Footer.jsx";
 import ConcertList from "./pages/Concert/ConcertList.jsx";
 import SportList from "./pages/Sport/SportList.jsx";
+import ProductPage from "./pages/product/index.jsx";
 import FAQ from "./components/Faq.jsx";
 import Login from "./pages/Login/Login.jsx";
 import SignUp from "./pages/Login/SignUp.jsx";
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/concerts" element={<ConcertList />} />
+          <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/sports" element={<SportList />} />
           <Route path="/shows" element={<SportList />} />
           <Route path="/festivals" element={<ConcertList />} />

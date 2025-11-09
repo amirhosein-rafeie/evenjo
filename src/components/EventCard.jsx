@@ -1,6 +1,7 @@
 
+import { Link } from "react-router-dom";
+
 const EventCard = ({ event, variant = "default" }) => {
-  const isSport = event.type === "sport" || event.sportName;
   const displayName = event.artistName || event.sportName || event.name;
 
   if (variant === "slider") {
@@ -21,7 +22,7 @@ const EventCard = ({ event, variant = "default" }) => {
     );
   }
 
-  return (
+  const CardContent = (
     <div className="relative w-72 text-white hover:scale-105 transition-transform duration-300 mb-20">
       <div className="relative">
         <img
@@ -74,11 +75,13 @@ const EventCard = ({ event, variant = "default" }) => {
 
         <div className="text-white font-semibold text-lg">
           from{" "}
-          <span className="text-primaryMain">${event.price.toFixed(2)}</span>
+          <span className="text-primaryMain">${event.price ? event.price.toFixed(2) : '0.00'}</span>
         </div>
       </div>
     </div>
   );
+
+  return <Link to={`/product/${event.id}`}>{CardContent}</Link>;
 };
 
 export default EventCard;

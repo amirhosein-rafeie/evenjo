@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import FilterBar from "../../components/FilterBar.jsx";
 import EventCard from "../../components/EventCard.jsx";
-import { setCategory } from "../../Store/Store.js";
+import { setCategory } from "../../Store/store.js";
 
 const ConcertList = () => {
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const ConcertList = () => {
         <FilterBar />
 
         <div className="mb-6">
-          <h2 className="text-gray-300 text-lg">
+          <h2 className="text-neutral-n200 text-lg">
             your search: {filteredConcerts.length} concerts found
           </h2>
         </div>
@@ -51,10 +51,10 @@ const ConcertList = () => {
 
         {filteredConcerts.length === 0 && (
           <div className="text-center py-12">
-            <div className="text-gray-400 text-xl mb-4">
+            <div className="text-neutral-n400 text-xl mb-4">
               No concerts found matching your criteria
             </div>
-            <p className="text-gray-500">
+            <p className="text-neutral-n500">
               Try adjusting your search filters to find more concerts
             </p>
           </div>

@@ -7,7 +7,7 @@ import {
   setPriceFilter,
   clearAllFilters,
   filterEvents,
-} from "../Store/Store";
+} from "../Store/store";
 
 const FilterBar = () => {
   const dispatch = useDispatch();

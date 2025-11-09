@@ -6,8 +6,9 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { concerts, sports } from "../components/data";
 
 const normalizeSportsData = (sports) => {
-  return sports.map((sport) => ({
+  return sports.map((sport, index) => ({
     ...sport,
+    id: sport.id + 1000,
     artistName: sport.sportName,
     name: sport.sportName,
     price: parseFloat(sport.price.replace("$", "")),
