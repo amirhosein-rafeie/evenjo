@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import HomeBac from "../../assets/HomeBac.jpg";
-import NavBar from "./NavBar.jsx";
 import {
   AttractionsOutlined,
   FitnessCenterOutlined,
@@ -20,15 +20,44 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { Drawer } from "@mui/material";
 
-export default function HomePage() {
+export default function HomePage({ abilityRef }) {
+
   const [selectedDate, setSelectedDate] = useState(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
 
+  const handleScrollAbility = () => {
+    if (!abilityRef.current) return;
+    const rect = abilityRef.current.getBoundingClientRect();
+    const y = rect.top + window.scrollY - 120;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
+  const handleLocationClick = () => {
+    if (navigator && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          console.log("lat:", pos.coords.latitude, "lng:", pos.coords.longitude);
+        },
+        (err) => {
+          console.warn("geolocation error", err);
+        }
+      );
+    } else {
+      console.warn("Geolocation not supported");
+    }
+  };
+
+  const menuItems = [
+    { icon: AudiotrackOutlined, text: "Concerts", to: "/concerts" },
+    { icon: TheaterComedyOutlined, text: "Shows", to: "/shows" },
+    { icon: FitnessCenterOutlined, text: "Sports", to: "/sports" },
+    { icon: AttractionsOutlined, text: "Festivals", to: "/festivals" },
+  ];
+
   return (
     <>
-      <NavBar className="sticky"></NavBar>
-      <div className=" max-w-screen flex flex-col gap-4 justify-center">
+      <div className="max-w-screen flex flex-col gap-4 justify-center">
         <div
           className="relative min-w-full min-h-screen flex flex-col items-center justify-center text-center overflow-hidden"
           style={{
@@ -44,93 +73,68 @@ export default function HomePage() {
           ></div>
 
           <div
-            className="flex flex-col gap-x-[<10px>] z-10 mt-40 px-4 w-full max-w-6xl"
-            style={{ marginTop: "100px" }}
+            className="flex flex-col z-10 mt-40 px-4 w-full max-w-6xl"
           >
-            <h1 className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <h1 className="text-white text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
               What <span className="text-[#D580F2]">Concert</span> would
               <br /> you like to go to?
             </h1>
-            <h3 className="text-white text-sm sm:text-base md:text-lg">
-              More than 100 concerts in different countries are now available to
-              you.
-            </h3>
+            <div className="text-2xl text-white sm:text-base md:text-lg">
+              More than 100 concerts in different countries are now available to you.
+            </div>
           </div>
 
           <div
             className="flex flex-col gap-5 p-4 sm:p-6 rounded-[21px] w-[90%] sm:w-full max-w-5xl mx-auto text-white mt-12 text-xl bg-[#1B1B1BCC] border border-[#303030] z-10"
-            style={{ marginTop: "70px" }}
+            style={{ marginTop: "90px" }}
           >
-            <div className="w-full px-2 sm:px-4" style={{ marginTop: "30px" }}>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-                {[
-                  { icon: AudiotrackOutlined, text: "Concerts" },
-                  { icon: TheaterComedyOutlined, text: "Shows" },
-                  { icon: FitnessCenterOutlined, text: "Sports" },
-                  { icon: AttractionsOutlined, text: "Festivals" },
-                ].map((item, i) => (
-                  <button
+            <div className="w-full px-2 sm:px-4" style={{ marginTop: "5px" }}>
+              <div className="grid grid-cols-2 sm:grid-cols-4 sm:gap-4 text-xl">
+                {menuItems.map((item, i) => (
+                  <Link
                     key={i}
+                    to={item.to}
                     className="flex justify-center items-center gap-2 h-10 sm:h-12 px-4 sm:px-5 rounded-full border-2 border-transparent hover:border-purple-500 hover:text-purple-500 transition text-xs sm:text-sm md:text-base"
                   >
                     <Icon component={item.icon} fontSize="small" />
                     <span>{item.text}</span>
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>
 
             <hr className="border-[#303030] mb-2 sm:mb-4" />
 
-            <div className="px-1 sm:px-8">
+            <div className="px-1 sm:px-8" style={{ marginTop: "-30px" }}>
               <div
-                className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr_auto] gap-4 sm:gap-6 items-center mt-2 sm:mt-4"
-                style={{ marginBottom: "30px" }}
+                className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr_auto] sm:gap-6 items-center mt-2 sm:mt-4"
               >
                 <div
-                  className="flex items-center justify-start gap-3 h-14 sm:h-16 px-2 sm:px-3"
-                  style={{ marginLeft: "40px" }}
+                  className="flex items-center justify-start h-14 sm:h-16 px-2 sm:px-3"
+                  style={{ marginLeft: "20px" }}
                 >
-                  <Icon
-                    component={WidgetsOutlined}
-                    fontSize="large"
-                    className="text-gray-400"
-                  />
+                  <Icon component={WidgetsOutlined} fontSize="large" className="text-gray-400" />
                   <div>
-                    <div className="text-base sm:text-lg leading-none">
-                      What
-                    </div>
-                    <div
-                      className="text-gray-400 text-xs sm:text-sm leading-tight"
-                      style={{ marginLeft: "15px" }}
-                    >
+                    <div className="text-base sm:text-lg leading-none">What</div>
+                    <div className="text-gray-400 text-xs sm:text-sm leading-tight" style={{ marginLeft: "5px" }}>
                       Event Type
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-start gap-3 border-t sm:border-t-0 sm:border-l border-[#303030] pl-0 sm:pl-6 h-14 sm:h-16 px-2 sm:px-3">
-                  <Icon
-                    component={FmdGoodOutlined}
-                    fontSize="large"
-                    className="text-gray-400"
-                  />
+                <div
+                  onClick={handleLocationClick}
+                  className="cursor-pointer flex items-center justify-start gap-3 border-t sm:border-t-0 sm:border-l border-[#303030] pl-0 sm:pl-6 h-14 sm:h-16 px-2 sm:px-3"
+                >
+                  <Icon component={FmdGoodOutlined} fontSize="large" className="text-gray-400" />
                   <div>
-                    <div className="text-base sm:text-lg leading-none">
-                      Where
-                    </div>
-                    <div className="text-gray-400 text-xs sm:text-sm leading-tight">
-                      Location
-                    </div>
+                    <div className="text-base sm:text-lg leading-none">Where</div>
+                    <div className="text-gray-400 text-xs sm:text-sm leading-tight">Location</div>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-start gap-3 border-t sm:border-t-0 sm:border-l border-[#303030] pl-0 sm:pl-6 h-14 sm:h-16 px-2 sm:px-3">
-                  <Icon
-                    component={CalendarMonthOutlined}
-                    fontSize="large"
-                    className="text-gray-400"
-                  />
+                  <Icon component={CalendarMonthOutlined} fontSize="large" className="text-gray-400" />
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker
                       label="When Date"
@@ -194,13 +198,13 @@ export default function HomePage() {
             className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-gray-400 text-xs sm:text-sm mt-8 sm:mt-10 z-10 w-[90%] sm:w-auto"
             style={{ marginTop: "15px" }}
           >
-            <button className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
+            <button onClick={handleScrollAbility} className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
               <Icon component={BookmarkBorderOutlined} /> Book Anytime
             </button>
-            <button className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
+            <button onClick={handleScrollAbility} className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
               <Icon component={ConfirmationNumberOutlined} /> Refundable Tickets
             </button>
-            <button className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
+            <button onClick={handleScrollAbility} className="flex justify-center sm:justify-start items-center gap-2 hover:text-white transition">
               <Icon component={CelebrationOutlined} /> Smart Deals
             </button>
           </div>

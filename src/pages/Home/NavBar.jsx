@@ -16,6 +16,8 @@ import TWButton from "../../components/TWButton";
 import Cart from "../../components/Cart";
 import flag1 from "../../assets/img/Flag img/flag1.png";
 import flag2 from "../../assets/img/Flag img/flag2.png";
+import FormControl from "@mui/material/FormControl";
+
 
 export default function NavBar() {
   const [country, setCountry] = useState("Eng");
@@ -30,7 +32,47 @@ export default function NavBar() {
     { name: "Concerts", to: "/concerts" },
     { name: "Sports", to: "/sports" },
     { name: "Festivals", to: "/festivals" },
+    { name: "Our Team", to: "/our-team" },
   ];
+
+  const selectStyle = {
+    minWidth: 100,
+    "& .MuiInputBase-root": {
+      borderRadius: "9999px",
+      color: "#fff",
+      px: "10px",
+      transition: "all 0.25s ease",
+      "&:hover": {
+        borderColor: "#b666ff",
+      },
+    },
+    "& .MuiSelect-icon": {
+      color: "#c084fc",
+    },
+  };
+
+  const menuProps = {
+    PaperProps: {
+      sx: {
+        backgroundColor: "#0a0a0a",
+        color: "#fff",
+        border: "1px solid #a855f7",
+        borderRadius: "12px",
+        boxShadow: "0 0 12px rgba(168,85,247,0.6)",
+        "& .MuiMenuItem-root": {
+          backgroundColor: "#0a0a0a",
+          color: "#fff",
+          "&.Mui-selected": {
+            backgroundColor: "#3b0764 !important",
+          },
+          "&:hover": {
+            backgroundColor: "#4c1d95 !important",
+          },
+        },
+      },
+    },
+    disablePortal: true,
+  };
 
   return (
     <nav>
@@ -43,7 +85,8 @@ export default function NavBar() {
           display: "flex",
         }}
       >
-        <Toolbar className=" flex items-center justify-between w-full">
+        <Toolbar className="flex items-center justify-between w-full">
+
           <div className="font-normal text-(--color-primaryMain) font-lobster text-4xl flex-none">
             <Link to="/" className="opacity-100 hover:opacity-100 transition-opacity">
               Evenjo
@@ -63,7 +106,6 @@ export default function NavBar() {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
-            <Cart />
             <Select
               value={country}
               onChange={(e) => setCountry(e.target.value)}
@@ -102,9 +144,10 @@ export default function NavBar() {
 
       <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
         <div
-          className="flex flex-col h-full bg-gray-900 text-white p-6"
+          className="flex flex-col h-full bg-black text-white p-6"
           style={{ width: "70vw" }}
         >
+
           <div className="flex justify-between items-center mb-6">
             <span className="text-2xl font-lobster">Evenjo</span>
             <button onClick={toggleDrawer(false)} className="text-xl">
@@ -127,29 +170,28 @@ export default function NavBar() {
           </List>
 
           <div className="flex flex-col gap-4 mt-6">
-            <Select
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-              variant="standard"
-              disableUnderline
-              sx={{
-                color: "white",
-                "& .MuiSelect-icon": { color: "white" },
-              }}
-            >
-              <MenuItem value="Eng">
-                <div className="flex items-center gap-1">
-                  <img src={flag1} alt="Eng" style={{ height: "10px" }} />
-                  Eng
-                </div>
-              </MenuItem>
-              <MenuItem value="Ir">
-                <div className="flex items-center gap-1">
-                  <img src={flag2} alt="Ir" style={{ height: "10px" }} />
-                  Ir
-                </div>
-              </MenuItem>
-            </Select>
+            <FormControl variant="standard" disableUnderline sx={selectStyle}>
+              <Select
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                variant="standard"
+                disableUnderline
+                MenuProps={menuProps}
+              >
+                <MenuItem value="Eng">
+                  <div className="flex items-center gap-1">
+                    <img src={flag1} alt="Eng" style={{ height: "10px" }} />
+                    Eng
+                  </div>
+                </MenuItem>
+                <MenuItem value="Ir">
+                  <div className="flex items-center gap-1">
+                    <img src={flag2} alt="Ir" style={{ height: "10px" }} />
+                    Ir
+                  </div>
+                </MenuItem>
+              </Select>
+            </FormControl>
 
             <TWButton onClick={() => navigate("/signup")}>signup</TWButton>
           </div>

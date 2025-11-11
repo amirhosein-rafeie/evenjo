@@ -110,11 +110,43 @@ const ForgetPassW = () => {
                             <div className="flex items-center px-2 rounded-l-md gap-1 h-12" style={{ backgroundColor: "rgba(29, 29, 29, 0.8)" }}>
                                 <Select
                                     value={country}
-                                    onChange={(e) => dispatch(setField({ field: "country", value: e.target.value }))}
+                                    onChange={(e) =>
+                                        dispatch(
+                                            setField({ field: "country", value: e.target.value })
+                                        )
+                                    }
                                     variant="standard"
                                     disableUnderline
-                                    sx={{ color: "white", "& .MuiSelect-icon": { color: "white" }, minWidth: "70px" }}
+                                    MenuProps={{
+                                        PaperProps: {
+                                            sx: {
+                                                backgroundColor: "#0a0a0a",
+                                                color: "#fff",
+                                                border: "1px solid #a855f7",
+                                                borderRadius: "10px",
+                                                boxShadow: "0 0 10px rgba(168,85,247,0.6)",
+                                                "& .MuiMenuItem-root": {
+                                                    backgroundColor: "#0a0a0a",
+                                                    color: "#fff",
+                                                    "&.Mui-selected": {
+                                                        backgroundColor: "#3b0764 !important",
+                                                    },
+                                                    "&:hover": {
+                                                        backgroundColor: "#4c1d95 !important",
+                                                    },
+                                                },
+                                            },
+                                        },
+                                        disablePortal: true,
+                                    }}
+                                    sx={{
+                                        color: "white",
+                                        fontFamily: "Inter, sans-serif",
+                                        "& .MuiSelect-icon": { color: "white" },
+                                        minWidth: "70px",
+                                    }}
                                 >
+
                                     <MenuItem value="Eng">
                                         <div className="flex items-center gap-1">
                                             <img src={flag1} style={{ height: "14px" }} alt="Eng" />

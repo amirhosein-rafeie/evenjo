@@ -1,23 +1,38 @@
+import { lazy, Suspense, useRef } from "react";
 import "../../index.css";
-import ConcertSection from "./ConcertSection.jsx";
-import SportSection from "../../pages/Home/SportSection.jsx";
-import HomePage from "./HomePage.jsx";
-import Ability from "../Home/Ability.jsx";
-import TopSingerSlider from "../Home/TopSingerSlider.jsx";
-import CommentSlider from "../Home/CommentSlider.jsx";
+import { ThemeProvider } from "@mui/material/styles";
+import darkTheme from "./darkTheme.js";
+
+const HomePage = lazy(() => import("./HomePage.jsx"));
+const ConcertSection = lazy(() => import("./ConcertSection.jsx"));
+const SportSection = lazy(() => import("../../pages/Home/SportSection.jsx"));
+const Ability = lazy(() => import("../Home/Ability.jsx"));
+const TopSingerSlider = lazy(() => import("../Home/TopSingerSlider.jsx"));
+const CommentSlider = lazy(() => import("../Home/CommentSlider.jsx"));
+
+const Loading = () => (
+  <div style={{
+    width: "100%", height: "100vh", background: "#0c0c0c", color: "#fff",
+    display: "flex", justifyContent: "center", alignItems: "center"
+  }}>
+    loading...
+  </div>
+);
 
 const Home = () => {
+  const abilityRef = useRef(null);
+
   return (
-    <div>
-      <HomePage />
-      <ConcertSection />
-      <SportSection />
-      <TopSingerSlider />
-      <SportSection />
-      <ConcertSection />
-      <Ability />
-      <CommentSlider />
-    </div>
+    <Suspense fallback={<Loading />}>
+      <ThemeProvider theme={darkTheme}>
+        <HomePage abilityRef={abilityRef} />
+        <ConcertSection />
+        <SportSection />
+        <TopSingerSlider />
+        <Ability ref={abilityRef} />
+        <CommentSlider />
+      </ThemeProvider>
+    </Suspense>
   );
 };
 

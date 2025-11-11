@@ -50,8 +50,7 @@ export default function FAQ() {
           Frequently Asked <span className="text-primaryMain">Questions</span>
         </h1>
         <p className="mt-2 text-sm text-neutral-n200">
-          Explore the most common questions and detailed answers about our
-          events and security to help guide your journey in the EVENJO.
+          Explore the most common questions and detailed answers about our events<br /> ot concerts, and security to help guide your journey in the EVENJO.
         </p>
       </div>
 
@@ -60,9 +59,8 @@ export default function FAQ() {
           {faqs.map((item, index) => (
             <div
               key={index}
-              className={`rounded-xl border border-neutral-n700 transition-all duration-300 overflow-hidden bg-neutral-n1000 ${
-                activeIndex === index ? "ring-1 ring-tint-bt2" : ""
-              }`}
+              className={`rounded-xl border border-neutral-n700 transition-all duration-300 overflow-hidden bg-neutral-n1000 ${activeIndex === index ? "ring-1 ring-tint-bt2" : ""
+                }`}
             >
               <button
                 onClick={() => toggleFAQ(index)}
@@ -76,19 +74,17 @@ export default function FAQ() {
                   <Icon
                     path={mdiChevronDown}
                     size={0.9}
-                    className={`text-neutral-n100 transition-transform duration-300 ${
-                      activeIndex === index ? "rotate-180" : "rotate-0"
-                    }`}
+                    className={`text-neutral-n100 transition-transform duration-300 ${activeIndex === index ? "rotate-180" : "rotate-0"
+                      }`}
                   />
                 </span>
               </button>
 
               <div
-                className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                  activeIndex === index
-                    ? "max-h-40 opacity-100 pb-4 px-6"
-                    : "max-h-0 opacity-0 px-6"
-                }`}
+                className={`transition-all duration-300 ease-in-out overflow-hidden ${activeIndex === index
+                  ? "max-h-40 opacity-100 pb-4 px-6"
+                  : "max-h-0 opacity-0 px-6"
+                  }`}
               >
                 <p className="text-neutral-n200 text-sm leading-relaxed">
                   {item.answer}
