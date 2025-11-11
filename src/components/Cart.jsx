@@ -80,7 +80,7 @@ const Cart = () => {
       >
         <div className="flex flex-col h-full">
           <div className="flex justify-between items-center p-4 border-b border-neutral-n700">
-            <h2 className="text-2xl font-bold">Shopping Cart</h2>
+            <h2 className="text-2xl font-bold">Cart</h2>
             <button
               onClick={handleClose}
               className="text-neutral-n200 hover:text-white text-2xl"
@@ -139,7 +139,7 @@ const Cart = () => {
                               onClick={() =>
                                 handleQuantityChange(item.id, item.quantity - 1)
                               }
-                              className="w-8 h-8 rounded border border-neutral-n600 bg-neutral-n700 hover:bg-neutral-n600 text-white flex items-center justify-center"
+                              className="w-8 h-8 rounded border border-neutral-n600 bg-neutral-n700 hover:bg-tint-wt text-white flex items-center justify-center"
                             >
                               -
                             </button>
@@ -150,7 +150,7 @@ const Cart = () => {
                               onClick={() =>
                                 handleQuantityChange(item.id, item.quantity + 1)
                               }
-                              className="w-8 h-8 rounded border border-neutral-n600 bg-neutral-n700 hover:bg-neutral-n600 text-white flex items-center justify-center"
+                              className="w-8 h-8 rounded border border-neutral-n600 bg-neutral-n700 hover:bg-tint-wt text-white flex items-center justify-center"
                             >
                               +
                             </button>
@@ -203,10 +203,10 @@ const Cart = () => {
               <button
                 className="w-full bg-primaryMain hover:bg-tint-wt text-white font-semibold py-3 rounded-lg transition-colors"
                 onClick={() => {
-                  alert("Checkout functionality will be implemented here!");
+                  alert("complete...");
                 }}
               >
-                Proceed to Checkout
+                continue
               </button>
             </div>
           )}
@@ -217,4 +217,3 @@ const Cart = () => {
 };
 
 export default Cart;
-

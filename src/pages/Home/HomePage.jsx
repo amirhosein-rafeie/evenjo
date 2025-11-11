@@ -18,9 +18,12 @@ import { Icon } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { Drawer } from "@mui/material";
 
 export default function HomePage() {
   const [selectedDate, setSelectedDate] = useState(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState("");
 
   return (
     <>
@@ -145,15 +148,44 @@ export default function HomePage() {
                     />
                   </LocalizationProvider>
                 </div>
-
                 <div className="flex justify-center sm:justify-end">
                   <button
+                    onClick={() => setSearchOpen(true)}
                     className="w-10 h-10 sm:w-14 sm:h-14 bg-[#C14FE6] hover:bg-purple-600 text-white rounded-lg transition flex items-center justify-center"
                     style={{ marginRight: "40px" }}
                   >
                     <img src={Magnifer} alt="search" className="w-5 sm:w-6" />
                   </button>
                 </div>
+                <Drawer
+                  anchor="top"
+                  open={searchOpen}
+                  onClose={() => setSearchOpen(false)}
+                  PaperProps={{
+                    sx: {
+                      backgroundColor: "#191919",
+                      padding: "20px",
+                    },
+                  }}
+                >
+                  <div className="flex items-center gap-3 w-full">
+                    <input
+                      autoFocus
+                      type="text"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      placeholder="Search..."
+                      className="w-full bg-neutral-n800 text-white p-3 rounded-lg border border-neutral-n600 focus:border-purple-400 outline-none"
+                    />
+
+                    <button
+                      onClick={() => setSearchOpen(false)}
+                      className="text-white text-2xl hover:text-purple-300"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                </Drawer>
               </div>
             </div>
           </div>

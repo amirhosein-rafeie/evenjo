@@ -132,7 +132,7 @@ export default function AdeleConcertPage() {
             filter: "brightness(0.3) blur(2px)",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-neutral-n1000 via-neutral-n900/80 to-transparent z-10" />
+        <div className="absolute inset-0  z-10" />
         <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 pb-16 pt-24">
           <div className="flex flex-col lg:flex-row items-start gap-8 relative">
             <div className="flex-1 z-30">
